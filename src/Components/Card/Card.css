@@ -1,3 +1,7 @@
+.hide {
+  display: none;
+}
+
 .card {
   position: relative;
 }
@@ -29,9 +33,26 @@
 .card .back {
   transition: all ease-in 0.2s;
   transition-delay: 0.2s;
+  filter: brightness(0.8);
 }
 
 .flipped .back {
   transform: rotateY(90deg);
   transition-delay: 0s;
+}
+
+.front-div {
+  display: relative;
+}
+
+.front-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
 }
