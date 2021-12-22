@@ -13,10 +13,10 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
         <div className="front-div">
           <img className="front" src={card.src} alt={card.alt} />
         </div>
-        <div className="back-div">
+        <div className="back-div back">
           <img
-            className="back"
-            src="/images/cover.jpg"
+            // className="back"
+            src="/images/cover.webp"
             onClick={handleClick}
             alt="card back"
             style={{
