@@ -161,7 +161,13 @@ function App() {
         </div>
       </div>
       {runConfetti ? (
-        <Confetti width={width} height={height} run={runConfetti} />
+        <Confetti
+          width={width}
+          height={height}
+          run={runConfetti}
+          colors={["#f44336", "#FFFFFF"]}
+          numberOfPieces={250}
+        />
       ) : null}
     </>
   );
