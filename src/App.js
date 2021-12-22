@@ -63,12 +63,17 @@ function App() {
   const [choice2, setChoice2] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const [runConfetti, setRunConfetti] = useState(false);
+  let [matchedCount, setMatchedCount] = useState(0);
+  let [started, setStarted] = useState(false);
 
   const shuffleCards = () => {
+    setStarted(false);
+    setRunConfetti(false);
+    setMatchedCount(0);
     //get 5 random cards from the array
     const tenRandomCards = cardImages
       .sort(() => 0.5 - Math.random())
-      .slice(0, 5);
+      .slice(0, 2);
     // double the cards
     const shuffledCards = [...tenRandomCards, ...tenRandomCards]
       // less then 0 = same order for the two items, positive = different order
@@ -88,8 +93,12 @@ function App() {
 
   // fires when the component mounts and whenver the dependencies change (choice1, choice2)
   useEffect(() => {
+    checkConfeti();
     // disable the cards till the checks are made
     if (choice1 && choice2) {
+      if (!started) {
+        setStarted(true);
+      }
       setDisabled(true);
       if (choice1.src === choice2.src) {
         // remap all of the cards with the choice1 and choice2 as matched
@@ -98,6 +107,8 @@ function App() {
             //check for each card
             if (card.src === choice1.src) {
               // if it one of the cards we return it with the matched property set to true
+              setMatchedCount((matchedCount += 1));
+              console.log(matchedCount);
               return { ...card, matched: true };
             } else {
               return card;
@@ -111,6 +122,16 @@ function App() {
       }
     }
   }, [choice1, choice2]);
+
+  const checkConfeti = () => {
+    console.log(matchedCount);
+    if (matchedCount === cards.length * 2 && started) {
+      console.log("confetti");
+      console.log(cards.length);
+      console.log(matchedCount);
+      setRunConfetti(true);
+    }
+  };
 
   console.log(cards);
 
@@ -139,7 +160,9 @@ function App() {
           ))}
         </div>
       </div>
-      <Confetti width={width} height={height} run={runConfetti} />
+      {runConfetti ? (
+        <Confetti width={width} height={height} run={runConfetti} />
+      ) : null}
     </>
   );
 }
