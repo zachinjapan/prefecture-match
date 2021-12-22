@@ -20,8 +20,8 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
             onClick={handleClick}
             alt="card back"
             style={{
-              height: "200px",
-              width: "200px",
+              height: "100%",
+              width: "100%",
               borderRadius: "10px",
             }}
           />

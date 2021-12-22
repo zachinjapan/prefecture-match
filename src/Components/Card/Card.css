@@ -4,6 +4,8 @@
 
 .card {
   position: relative;
+  width: 200px;
+  height: 200px;
 }
 
 .card img {
@@ -55,4 +57,11 @@
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 150px;
+    height: 150px;
+  }
 }
