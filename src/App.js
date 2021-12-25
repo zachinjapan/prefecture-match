@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Components/Card/Card";
 import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
+import song from "../src/audio/correct.m4a";
 
 // outside of function so
 const cardImages = [
@@ -106,9 +107,11 @@ function App() {
           return prevCards.map((card) => {
             //check for each card
             if (card.src === choice1.src) {
+              playPause();
               // if it one of the cards we return it with the matched property set to true
               setMatchedCount((matchedCount += 1));
               console.log(matchedCount);
+
               return { ...card, matched: true };
             } else {
               return card;
@@ -129,6 +132,7 @@ function App() {
       console.log("confetti");
       console.log(cards.length);
       console.log(matchedCount);
+      playPause();
       setRunConfetti(true);
     }
   };
@@ -139,6 +143,28 @@ function App() {
     setChoice1(null);
     setChoice2(null);
     setDisabled(false);
+  };
+
+  // audio
+
+  // Get audio file in a variable
+  let audio = new Audio(song);
+
+  // Set initial state of song
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Main function to handle both play and pause operations
+  const playPause = () => {
+    if (isPlaying) {
+      // Pause the song if it is playing
+      audio.pause();
+    } else {
+      // Play the song if it is paused
+      audio.play();
+    }
+
+    // Change the state of song
+    setIsPlaying(!isPlaying);
   };
 
   return (
