@@ -1,5 +1,9 @@
 .App {
   margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 button {
   background: none;
@@ -24,5 +28,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   width: 100vw;
+  /* prevents having long lines of single cards on big viewports */
+  max-width: 1024px;
   height: fit-content;
 }

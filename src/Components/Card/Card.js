@@ -16,7 +16,7 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
         <div className="back-div back">
           <img
             // className="back"
-            src="/images/cover.webp"
+            src="/images/cover.jpg"
             onClick={handleClick}
             alt="card back"
             style={{

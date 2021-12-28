@@ -3,58 +3,59 @@ import React, { useEffect, useState } from "react";
 import Card from "./Components/Card/Card";
 import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
-import song from "../src/audio/correct.m4a";
+import correctSound from "../src/audio/correct.m4a";
+import errorSound from "../src/audio/error.m4a";
 
 // outside of function so
 const cardImages = [
-  { src: "/images/aomori-1.webp", matched: false, alt: "aomori" },
-  { src: "/images/aichi-1.webp", matched: false, alt: "aichi" },
-  { src: "/images/akita-1.webp", matched: false, alt: "akita" },
-  { src: "/images/aomori-1.webp", matched: false, alt: "aomori" },
-  { src: "/images/chiba-1.webp", matched: false, alt: "chiba" },
-  { src: "/images/Ehime-1.webp", matched: false, alt: "ehime" },
-  { src: "/images/fukui-1.webp", matched: false, alt: "fukui" },
-  { src: "/images/fukuoka-1.webp", matched: false, alt: "fukuoka" },
-  { src: "/images/fukushima-1.webp", matched: false, alt: "fukushima" },
-  { src: "/images/gifu-1.webp", matched: false, alt: "gifu" },
-  { src: "/images/gunma-1.webp", matched: false, alt: "gunma" },
-  { src: "/images/hiroshima-1.webp", matched: false, alt: "hiroshima" },
-  { src: "/images/hokkaido-1.webp", matched: false, alt: "hokkaido" },
-  { src: "/images/hyogo-1.webp", matched: false, alt: "hyogo" },
-  { src: "/images/ibaraki-1.webp", matched: false, alt: "ibaraki" },
-  { src: "/images/ishikawa-1.webp", matched: false, alt: "ishikawa" },
-  { src: "/images/iwate-1.webp", matched: false, alt: "iwate" },
-  { src: "/images/kagawa-1.webp", matched: false, alt: "kagawa" },
-  { src: "/images/kagoshima-1.webp", matched: false, alt: "kagoshima" },
-  { src: "/images/kanagawa-1.webp", matched: false, alt: "kanagawa" },
-  { src: "/images/kochi-1.webp", matched: false, alt: "kochi" },
-  { src: "/images/kumamoto-1.webp", matched: false, alt: "kumamoto" },
-  { src: "/images/kyoto-1.webp", matched: false, alt: "kyoto" },
-  { src: "/images/miyagi-1.webp", matched: false, alt: "miyagi" },
-  { src: "/images/mie-1.webp", matched: false, alt: "mie" },
-  { src: "/images/miyazaki-1.webp", matched: false, alt: "miyazaki" },
-  { src: "/images/nagano-1.webp", matched: false, alt: "nagano" },
-  { src: "/images/nagasaki-1.webp", matched: false, alt: "nagasaki" },
-  { src: "/images/nara-1.webp", matched: false, alt: "nara" },
-  { src: "/images/niigata-1.webp", matched: false, alt: "niigata" },
-  { src: "/images/oita-1.webp", matched: false, alt: "oita" },
-  { src: "/images/okayama-1.webp", matched: false, alt: "okayama" },
-  { src: "/images/okinawa-1.webp", matched: false, alt: "okinawa" },
-  { src: "/images/osaka-1.webp", matched: false, alt: "osaka" },
-  { src: "/images/saga-1.webp", matched: false, alt: "saga" },
-  { src: "/images/saitama-1.webp", matched: false, alt: "saitama" },
-  { src: "/images/shiga-1.webp", matched: false, alt: "shiga" },
-  { src: "/images/shimane-1.webp", matched: false, alt: "shimane" },
-  { src: "/images/shizuoka-1.webp", matched: false, alt: "shizuoka" },
-  { src: "/images/tochigi-1.webp", matched: false, alt: "tochigi" },
-  { src: "/images/tokushima-1.webp", matched: false, alt: "tokushima" },
-  { src: "/images/tokyo-1.webp", matched: false, alt: "tokyo" },
-  { src: "/images/tottori-1.webp", matched: false, alt: "tottori" },
-  { src: "/images/toyama-1.webp", matched: false, alt: "toyama" },
-  { src: "/images/wakayama-1.webp", matched: false, alt: "wakayama" },
-  { src: "/images/yamagata-1.webp", matched: false, alt: "yamagata" },
-  { src: "/images/yamaguchi-1.webp", matched: false, alt: "yamaguchi" },
-  { src: "/images/yamanashi-1.webp", matched: false, alt: "yamanashi" },
+  { src: "/images/aomori.jpg", matched: false, alt: "aomori" },
+  { src: "/images/aichi.jpg", matched: false, alt: "aichi" },
+  { src: "/images/akita.jpg", matched: false, alt: "akita" },
+  { src: "/images/aomori.jpg", matched: false, alt: "aomori" },
+  { src: "/images/chiba.jpg", matched: false, alt: "chiba" },
+  { src: "/images/Ehime.jpg", matched: false, alt: "ehime" },
+  { src: "/images/fukui.jpg", matched: false, alt: "fukui" },
+  { src: "/images/fukuoka.jpg", matched: false, alt: "fukuoka" },
+  { src: "/images/fukushima.jpg", matched: false, alt: "fukushima" },
+  { src: "/images/gifu.jpg", matched: false, alt: "gifu" },
+  { src: "/images/gunma.jpg", matched: false, alt: "gunma" },
+  { src: "/images/hiroshima.jpg", matched: false, alt: "hiroshima" },
+  { src: "/images/hokkaido.jpg", matched: false, alt: "hokkaido" },
+  { src: "/images/hyogo.jpg", matched: false, alt: "hyogo" },
+  { src: "/images/ibaraki.jpg", matched: false, alt: "ibaraki" },
+  { src: "/images/ishikawa.jpg", matched: false, alt: "ishikawa" },
+  { src: "/images/iwate.jpg", matched: false, alt: "iwate" },
+  { src: "/images/kagawa.jpg", matched: false, alt: "kagawa" },
+  { src: "/images/kagoshima.jpg", matched: false, alt: "kagoshima" },
+  { src: "/images/kanagawa.jpg", matched: false, alt: "kanagawa" },
+  { src: "/images/kochi.jpg", matched: false, alt: "kochi" },
+  { src: "/images/kumamoto.jpg", matched: false, alt: "kumamoto" },
+  { src: "/images/kyoto.jpg", matched: false, alt: "kyoto" },
+  { src: "/images/miyagi.jpg", matched: false, alt: "miyagi" },
+  { src: "/images/mie.jpg", matched: false, alt: "mie" },
+  { src: "/images/miyazaki.jpg", matched: false, alt: "miyazaki" },
+  { src: "/images/nagano.jpg", matched: false, alt: "nagano" },
+  { src: "/images/nagasaki.jpg", matched: false, alt: "nagasaki" },
+  { src: "/images/nara.jpg", matched: false, alt: "nara" },
+  { src: "/images/niigata.jpg", matched: false, alt: "niigata" },
+  { src: "/images/oita.jpg", matched: false, alt: "oita" },
+  { src: "/images/okayama.jpg", matched: false, alt: "okayama" },
+  { src: "/images/okinawa.jpg", matched: false, alt: "okinawa" },
+  { src: "/images/osaka.jpg", matched: false, alt: "osaka" },
+  { src: "/images/saga.jpg", matched: false, alt: "saga" },
+  { src: "/images/saitama.jpg", matched: false, alt: "saitama" },
+  { src: "/images/shiga.jpg", matched: false, alt: "shiga" },
+  { src: "/images/shimane.jpg", matched: false, alt: "shimane" },
+  { src: "/images/shizuoka.jpg", matched: false, alt: "shizuoka" },
+  { src: "/images/tochigi.jpg", matched: false, alt: "tochigi" },
+  { src: "/images/tokushima.jpg", matched: false, alt: "tokushima" },
+  { src: "/images/tokyo.jpg", matched: false, alt: "tokyo" },
+  { src: "/images/tottori.jpg", matched: false, alt: "tottori" },
+  { src: "/images/toyama.jpg", matched: false, alt: "toyama" },
+  { src: "/images/wakayama.jpg", matched: false, alt: "wakayama" },
+  { src: "/images/yamagata.jpg", matched: false, alt: "yamagata" },
+  { src: "/images/yamaguchi.jpg", matched: false, alt: "yamaguchi" },
+  { src: "/images/yamanashi.jpg", matched: false, alt: "yamanashi" },
 ];
 
 function App() {
@@ -74,7 +75,7 @@ function App() {
     //get 5 random cards from the array
     const tenRandomCards = cardImages
       .sort(() => 0.5 - Math.random())
-      .slice(0, 2);
+      .slice(0, 5);
     // double the cards
     const shuffledCards = [...tenRandomCards, ...tenRandomCards]
       // less then 0 = same order for the two items, positive = different order
@@ -107,11 +108,10 @@ function App() {
           return prevCards.map((card) => {
             //check for each card
             if (card.src === choice1.src) {
-              playPause();
+              correct.play();
               // if it one of the cards we return it with the matched property set to true
               setMatchedCount((matchedCount += 1));
               console.log(matchedCount);
-
               return { ...card, matched: true };
             } else {
               return card;
@@ -121,7 +121,10 @@ function App() {
 
         resetTurn();
       } else {
-        setTimeout(resetTurn, 1000);
+        setTimeout(() => {
+          error.play();
+          resetTurn();
+        }, 1500);
       }
     }
   }, [choice1, choice2]);
@@ -132,7 +135,7 @@ function App() {
       console.log("confetti");
       console.log(cards.length);
       console.log(matchedCount);
-      playPause();
+      // correct.play();
       setRunConfetti(true);
     }
   };
@@ -148,24 +151,8 @@ function App() {
   // audio
 
   // Get audio file in a variable
-  let audio = new Audio(song);
-
-  // Set initial state of song
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  // Main function to handle both play and pause operations
-  const playPause = () => {
-    if (isPlaying) {
-      // Pause the song if it is playing
-      audio.pause();
-    } else {
-      // Play the song if it is paused
-      audio.play();
-    }
-
-    // Change the state of song
-    setIsPlaying(!isPlaying);
-  };
+  let correct = new Audio(correctSound);
+  let error = new Audio(errorSound);
 
   return (
     <>
