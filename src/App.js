@@ -19,7 +19,7 @@ const cardImages = [
   { src: "/images/fukushima.jpg", matched: false, alt: "fukushima" },
   { src: "/images/gifu.jpg", matched: false, alt: "gifu" },
   { src: "/images/gunma.jpg", matched: false, alt: "gunma" },
-  { src: "/images/hiroshima.jpg", matched: false, alt: "hiroshima" },
+  { src: "/images/hiroshima.png", matched: false, alt: "hiroshima" },
   { src: "/images/hokkaido.jpg", matched: false, alt: "hokkaido" },
   { src: "/images/hyogo.jpg", matched: false, alt: "hyogo" },
   { src: "/images/ibaraki.jpg", matched: false, alt: "ibaraki" },

@@ -32,3 +32,14 @@ button:hover {
   max-width: 1024px;
   height: fit-content;
 }
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 0.8em;
+    padding: 1%;
+  }
+}
