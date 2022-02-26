@@ -19,6 +19,7 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
             src="/images/cover.jpg"
             onClick={handleClick}
             alt="card back"
+            loading="lazy"
             style={{
               height: "100%",
               width: "100%",

@@ -111,7 +111,6 @@ function App() {
               correct.play();
               // if it one of the cards we return it with the matched property set to true
               setMatchedCount((matchedCount += 1));
-              console.log(matchedCount);
               return { ...card, matched: true };
             } else {
               return card;
@@ -130,17 +129,11 @@ function App() {
   }, [choice1, choice2]);
 
   const checkConfeti = () => {
-    console.log(matchedCount);
     if (matchedCount === cards.length * 2 && started) {
-      console.log("confetti");
-      console.log(cards.length);
-      console.log(matchedCount);
       // correct.play();
       setRunConfetti(true);
     }
   };
-
-  console.log(cards);
 
   const resetTurn = () => {
     setChoice1(null);
